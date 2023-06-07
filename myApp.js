@@ -1,5 +1,7 @@
-require('dotenv').config();
+require("dotenv").config({ path: "./.env" });
+const mongoose = require("mongoose");
 
+const url = process.env.DB_URL;
 
 let Person;
 
@@ -54,6 +56,11 @@ const queryChain = (done) => {
 /** **Well Done !!**
 /* You completed these challenges, let's go celebrate !
  */
+
+mongoose
+  .connect(url, { useNewUrlParser: true, useUnifiedTopology: true })
+  .then(() => console.log("MongoDB connection successful..."))
+  .catch((err) => console.log("MongoDB connection field", err.message));
 
 //----- **DO NOT EDIT BELOW THIS LINE** ----------------------------------
 
