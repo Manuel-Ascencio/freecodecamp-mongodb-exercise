@@ -62,6 +62,23 @@ mongoose
   .then(() => console.log("MongoDB connection successful..."))
   .catch((err) => console.log("MongoDB connection field", err.message));
 
+const personSchema = new mongoose.Schema({
+  name: {
+    type: String,
+    require: true,
+  },
+  age: {
+    type: Number,
+    require: true,
+  },
+  favoriteFoods: {
+    type: String,
+    require: true,
+  },
+});
+
+Person = mongoose.model("Person", personSchema);
+
 //----- **DO NOT EDIT BELOW THIS LINE** ----------------------------------
 
 exports.PersonModel = Person;
