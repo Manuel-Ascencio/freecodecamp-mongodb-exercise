@@ -8,14 +8,8 @@ let personSchema = new mongoose.Schema({
     type: String,
     require: true,
   },
-  age: {
-    type: Number,
-    require: true,
-  },
-  favoriteFoods: {
-    type: String,
-    require: true,
-  },
+  age: Number,
+  favoriteFoods: [String],
 });
 
 let Person = mongoose.model("Person", personSchema);
