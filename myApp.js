@@ -3,7 +3,22 @@ const mongoose = require("mongoose");
 
 const url = process.env.DB_URL;
 
-let Person;
+let personSchema = new mongoose.Schema({
+  name: {
+    type: String,
+    require: true,
+  },
+  age: {
+    type: Number,
+    require: true,
+  },
+  favoriteFoods: {
+    type: String,
+    require: true,
+  },
+});
+
+let Person = mongoose.model("Person", personSchema);
 
 const createAndSavePerson = (done) => {
   done(null /*, data*/);
@@ -61,23 +76,6 @@ mongoose
   .connect(url, { useNewUrlParser: true, useUnifiedTopology: true })
   .then(() => console.log("MongoDB connection successful..."))
   .catch((err) => console.log("MongoDB connection field", err.message));
-
-const personSchema = new mongoose.Schema({
-  name: {
-    type: String,
-    require: true,
-  },
-  age: {
-    type: Number,
-    require: true,
-  },
-  favoriteFoods: {
-    type: String,
-    require: true,
-  },
-});
-
-Person = mongoose.model("Person", personSchema);
 
 //----- **DO NOT EDIT BELOW THIS LINE** ----------------------------------
 
