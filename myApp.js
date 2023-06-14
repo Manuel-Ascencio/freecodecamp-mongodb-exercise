@@ -112,9 +112,9 @@ const queryChain = (done) => {
     .sort({ name: -1 })
     .limit(2)
     .select({ favoriteFoods: foodToSearch })
-    .exec(function (error, people) {
+    .exec(function (error, data) {
       if (error) return console.log(error);
-      done(null, people);
+      done(null, data);
     });
 };
 
